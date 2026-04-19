@@ -22,7 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${siteConfig.url}/locations/${city.slug}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
-    priority: 0.7,
+    priority: 0.75,
   }));
 
   return [...staticPages, ...servicePages, ...cityPages];

@@ -25,11 +25,25 @@ export type Service = {
   pricing?: ServicePricingBlock;
 };
 
+export type CityFaq = {
+  id: string;
+  question: string;
+  answer: string;
+};
+
 export type City = {
   slug: string;
   name: string;
   state: string;
   intro: string;
+  /** Unique copy for “web design [city]” style intent */
+  webDesignBody: string;
+  /** Holistic digital marketing narrative (web + local SEO); used in city hero, not as a separate “service silo” */
+  digitalMarketingBody: string;
+  /** Unique copy for “seo agency [city]” intent */
+  seoAgencyBody: string;
+  /** Visible FAQs + matching FAQPage JSON-LD */
+  faqs: CityFaq[];
 };
 
 export type PortfolioProject = {

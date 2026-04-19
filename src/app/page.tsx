@@ -5,9 +5,8 @@ import { Card } from "@/components/ui/card";
 import { Reveal } from "@/components/motion/reveal";
 import { GrowthIcon, MapPinPulseIcon, SparkIcon } from "@/components/icons";
 import { JsonLd } from "@/components/seo/json-ld";
-import { ReviewsMarqueeSection } from "@/components/reviews/reviews-marquee-section";
+import { cities } from "@/lib/data/cities";
 import { services } from "@/lib/data/services";
-import { getMarqueeReviews } from "@/lib/google-place-reviews";
 import { buildMetadata } from "@/lib/seo";
 import { breadcrumbSchema } from "@/lib/structured-data";
 
@@ -23,12 +22,7 @@ export const metadata = buildMetadata({
   ],
 });
 
-/** Regenerate homepage periodically so Google reviews stay fresh (matches `fetch` revalidate in `getMarqueeReviews`). */
-export const revalidate = 3600;
-
-export default async function Home() {
-  const marqueeReviews = await getMarqueeReviews();
-
+export default function Home() {
   return (
     <>
       <JsonLd data={breadcrumbSchema([{ name: "Home", path: "/" }])} />
@@ -96,11 +90,26 @@ export default async function Home() {
         </div>
       </Section>
 
-      {/* <ReviewsMarqueeSection
-        reviews={marqueeReviews.reviews}
-        source={marqueeReviews.source}
-        placeId={marqueeReviews.placeId}
-      /> */}
+      <Section
+        eyebrow="Markets"
+        title="Markets we serve"
+        subtitle="Localized digital marketing pages—web design and local SEO for service businesses in each area."
+      >
+        <div className="flex flex-wrap gap-3">
+          {cities.map((city) => (
+            <Link
+              key={city.slug}
+              href={`/locations/${city.slug}`}
+              className="glass rounded-full px-4 py-2 text-sm font-semibold text-cyan-200 ring-1 ring-slate-700/80 transition hover:bg-slate-800/60 hover:text-white"
+            >
+              {city.name}, {city.state}
+            </Link>
+          ))}
+          <Link href="/locations" className="rounded-full px-4 py-2 text-sm font-semibold text-slate-400 underline-offset-4 hover:text-cyan-200 hover:underline">
+            All locations
+          </Link>
+        </div>
+      </Section>
     </>
   );
 }

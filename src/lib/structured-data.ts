@@ -47,7 +47,7 @@ export function localBusinessSchema() {
     email: siteConfig.email,
     telephone: siteConfig.phone,
     areaServed: siteConfig.areaServed,
-    serviceType: ["Web Design", "Local SEO"],
+    serviceType: ["Digital Marketing", "Web Design", "Local SEO"],
     sameAs: Object.values(siteConfig.social),
   };
 }
@@ -91,14 +91,15 @@ export function cityLocationWebPageSchema(city: City) {
   const path = `/locations/${city.slug}`;
   const pageUrl = fullUrl(path);
   const placeName = `${city.name}, ${city.state}`;
+  const description = `${city.intro} Digital marketing for businesses in ${placeName}, delivered through web design and local SEO.`;
 
   return {
     "@context": "https://schema.org",
     "@type": "WebPage",
     "@id": `${pageUrl}#webpage`,
     url: pageUrl,
-    name: `Web design and local SEO in ${placeName}`,
-    description: city.intro,
+    name: `Digital marketing in ${placeName} — web design & local SEO`,
+    description,
     inLanguage: siteConfig.locale,
     isPartOf: {
       "@id": `${siteConfig.url}#website`,
@@ -116,5 +117,20 @@ export function cityLocationWebPageSchema(city: City) {
         addressCountry: "US",
       },
     },
+  };
+}
+
+export function faqPageSchema(items: { question: string; answer: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
   };
 }

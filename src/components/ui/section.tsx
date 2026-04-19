@@ -1,12 +1,18 @@
+import type { ReactNode } from "react";
+
 type SectionProps = {
   id?: string;
   eyebrow?: string;
   title: string;
   subtitle?: string;
-  children: React.ReactNode;
+  /** Use `h1` only once per page (typically the hero section). */
+  titleAs?: "h1" | "h2";
+  children: ReactNode;
 };
 
-export function Section({ id, eyebrow, title, subtitle, children }: SectionProps) {
+export function Section({ id, eyebrow, title, subtitle, titleAs = "h2", children }: SectionProps) {
+  const HeadingTag = titleAs === "h1" ? "h1" : "h2";
+
   return (
     <section id={id} className="section-padding">
       <div className="container">
@@ -16,7 +22,7 @@ export function Section({ id, eyebrow, title, subtitle, children }: SectionProps
               {eyebrow}
             </p>
           ) : null}
-          <h2 className="text-3xl font-bold text-white md:text-4xl">{title}</h2>
+          <HeadingTag className="text-3xl font-bold text-white md:text-4xl">{title}</HeadingTag>
           {subtitle ? <p className="mt-4 text-slate-300">{subtitle}</p> : null}
         </div>
         {children}
