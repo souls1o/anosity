@@ -19,14 +19,14 @@ export const webDesignPricing: ServicePricingBlock = {
       label: "Growth",
       headline: "More qualified leads from the services you want most",
       body: "For operators ready to compete on intent—sharper messaging across multiple services, conversion paths tuned to how people actually buy, and a site structured to turn more of the right traffic into booked work.",
-      startingFrom: "$1,200",
+      startingFrom: "$1,000",
     },
     {
       id: "authority",
       label: "Authority",
       headline: "Multi-city dominance and compounding demand",
       body: "For brands pushing into new towns and categories—built to scale authority across markets, reinforce relevance everywhere you operate, and support aggressive local growth without diluting trust or clarity.",
-      startingFrom: "$2,000",
+      startingFrom: "$1,800",
     },
   ],
 };
