@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/seo/breadcrumbs";
 import { Section } from "@/components/ui/section";
 import { Card } from "@/components/ui/card";
 import { JsonLd } from "@/components/seo/json-ld";
@@ -23,6 +24,12 @@ export const metadata = buildMetadata({
 export default function LocationsPage() {
   return (
     <>
+      <Breadcrumbs
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Locations", href: "/locations" },
+        ]}
+      />
       <JsonLd
         data={breadcrumbSchema([
           { name: "Home", path: "/" },

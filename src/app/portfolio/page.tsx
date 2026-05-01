@@ -1,6 +1,7 @@
 import { Section } from "@/components/ui/section";
 import { Reveal } from "@/components/motion/reveal";
 import { PortfolioCard } from "@/components/portfolio/portfolio-card";
+import { Breadcrumbs } from "@/components/seo/breadcrumbs";
 import { JsonLd } from "@/components/seo/json-ld";
 import { portfolioProjects } from "@/lib/data/portfolio";
 import { buildMetadata } from "@/lib/seo";
@@ -17,6 +18,12 @@ export const metadata = buildMetadata({
 export default function PortfolioPage() {
   return (
     <>
+      <Breadcrumbs
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Portfolio", href: "/portfolio" },
+        ]}
+      />
       <JsonLd
         data={breadcrumbSchema([
           { name: "Home", path: "/" },

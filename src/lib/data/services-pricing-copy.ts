@@ -5,7 +5,8 @@ export const pricingScopeDisclaimer =
   "Final investment depends on your scope, how many services you promote, and how many locations you need to win.";
 
 export const webDesignPricing: ServicePricingBlock = {
-  disclaimer: pricingScopeDisclaimer,
+  disclaimer:
+    "Build pricing is separate from maintenance. Ongoing maintenance is $97/mo and includes hosting, small updates, fixes, and monthly reporting (page visits, button clicks, and form submissions).",
   tiers: [
     {
       id: "basic",
@@ -27,6 +28,34 @@ export const webDesignPricing: ServicePricingBlock = {
       headline: "Multi-city dominance and compounding demand",
       body: "For brands pushing into new towns and categories—built to scale authority across markets, reinforce relevance everywhere you operate, and support aggressive local growth without diluting trust or clarity.",
       startingFrom: "$1,800",
+    },
+  ],
+};
+
+export const aiReceptionistPricing: ServicePricingBlock = {
+  disclaimer:
+    "AI receptionist investment is monthly and depends on customization depth (scripts, response logic, booking flows, and feature add-ons).",
+  tiers: [
+    {
+      id: "ai-starter",
+      label: "Starter",
+      headline: "Reliable AI call handling with your core script",
+      body: "Great for businesses that need consistent after-hours and overflow coverage using approved scripts, core FAQs, and clean handoff behavior.",
+      startingFrom: "$197/mo",
+    },
+    {
+      id: "ai-growth",
+      label: "Growth",
+      headline: "Smarter responses and tailored conversation paths",
+      body: "For teams that want deeper customization: service-specific responses, qualification logic, and more nuanced scripting that matches your brand voice.",
+      startingFrom: "$297/mo",
+    },
+    {
+      id: "ai-advanced",
+      label: "Advanced",
+      headline: "Automation-forward receptionist workflows",
+      body: "For operators who want advanced booking automation, custom integrations, escalation rules, and expanded feature sets for higher call volume.",
+      startingFrom: "$497/mo",
     },
   ],
 };

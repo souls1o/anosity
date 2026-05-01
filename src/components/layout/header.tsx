@@ -7,6 +7,7 @@ export const headerNavItems = [
   { href: "/portfolio", label: "Portfolio" },
   { href: "/services", label: "Services" },
   { href: "/locations", label: "Locations" },
+  { href: "/insights", label: "Insights" },
   { href: "/contact", label: "Contact" },
 ] as const;
 

@@ -1,10 +1,11 @@
 import type { MetadataRoute } from "next";
 import { cities } from "@/lib/data/cities";
+import { getInsightSitemapEntries } from "@/lib/data/insights";
 import { services } from "@/lib/data/services";
 import { siteConfig } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticPages = ["", "/services", "/locations", "/portfolio", "/contact"].map((path) => ({
+  const staticPages = ["", "/services", "/locations", "/portfolio", "/insights", "/contact"].map((path) => ({
     url: `${siteConfig.url}${path}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
@@ -15,7 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${siteConfig.url}/services/${service.slug}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
-    priority: 0.7,
+    priority: service.slug === "ai-receptionist" ? 0.75 : 0.7,
   }));
 
   const cityPages = cities.map((city) => ({
@@ -25,5 +26,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
-  return [...staticPages, ...servicePages, ...cityPages];
+  const cityServicePages = cities.flatMap((city) =>
+    services.map((service) => ({
+      url: `${siteConfig.url}/services/${service.slug}/${city.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    }))
+  );
+
+  const insightPages = getInsightSitemapEntries(siteConfig.url);
+
+  return [...staticPages, ...servicePages, ...cityPages, ...cityServicePages, ...insightPages];
 }

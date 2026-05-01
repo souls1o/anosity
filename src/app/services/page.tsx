@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/seo/breadcrumbs";
 import { Section } from "@/components/ui/section";
 import { Card } from "@/components/ui/card";
 import { JsonLd } from "@/components/seo/json-ld";
@@ -9,11 +10,12 @@ import { breadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
   title: "Services",
-  description: "Explore web design and local SEO services built for local service-based businesses.",
+  description: "Explore digital marketing services for local service businesses: web design, local SEO, and AI receptionist implementation.",
   path: "/services",
   keywords: [
     "web design services",
     "local seo services",
+    "ai receptionist services",
     "digital marketing services for local businesses",
   ],
 });
@@ -21,6 +23,12 @@ export const metadata = buildMetadata({
 export default function ServicesPage() {
   return (
     <>
+      <Breadcrumbs
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Services", href: "/services" },
+        ]}
+      />
       <JsonLd
         data={breadcrumbSchema([
           { name: "Home", path: "/" },
@@ -30,7 +38,7 @@ export default function ServicesPage() {
       <Section
         eyebrow="Services"
         title="Performance-focused marketing services"
-        subtitle="Each service page is SEO-ready and conversion-focused for high-intent searches."
+        subtitle="Digital marketing delivered through web design, local SEO, and AI receptionist systems for high-intent lead generation."
       >
         <div className="grid gap-5 md:grid-cols-2">
           {services.map((service) => (

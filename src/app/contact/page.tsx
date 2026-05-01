@@ -1,4 +1,5 @@
 import { LeadForm } from "@/components/forms/lead-form";
+import { Breadcrumbs } from "@/components/seo/breadcrumbs";
 import { JsonLd } from "@/components/seo/json-ld";
 import { Section } from "@/components/ui/section";
 import { buildMetadata } from "@/lib/seo";
@@ -15,6 +16,12 @@ export const metadata = buildMetadata({
 export default function ContactPage() {
   return (
     <>
+      <Breadcrumbs
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Contact", href: "/contact" },
+        ]}
+      />
       <JsonLd
         data={breadcrumbSchema([
           { name: "Home", path: "/" },

@@ -46,7 +46,9 @@ export function SocialLinks({ className = "" }: { className?: string }) {
       <a href={social.facebook} className={linkClass} target="_blank" rel="noopener noreferrer" aria-label="Facebook">
         <FacebookIcon />
       </a>
-     
+      <a href={social.instagram} className={linkClass} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <InstagramIcon />
+      </a>
     </div>
   );
 }

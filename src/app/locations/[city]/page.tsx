@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Breadcrumbs } from "@/components/seo/breadcrumbs";
 import { Section } from "@/components/ui/section";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -30,13 +32,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const place = `${item.name}, ${item.state}`;
   return buildMetadata({
     title: `Digital Marketing in ${place} — Web & Local SEO`,
-    description: `Digital marketing for service businesses in ${place}: web design and local SEO that turn local searches into booked calls. ${item.intro}`,
+    description: `Digital marketing for service businesses in ${place}: web design, local SEO, and AI receptionist systems that turn local searches into booked calls.`,
     path: `/locations/${item.slug}`,
     keywords: [
       `web design ${item.name.toLowerCase()}`,
       `digital marketing ${item.name.toLowerCase()}`,
       `seo agency ${item.name.toLowerCase()}`,
       `local seo ${item.name.toLowerCase()}`,
+      `ai receptionist ${item.name.toLowerCase()}`,
       `${item.name.toLowerCase()} service business marketing`,
     ],
   });
@@ -49,6 +52,13 @@ export default async function CityPage({ params }: Props) {
 
   return (
     <>
+      <Breadcrumbs
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Locations", href: "/locations" },
+          { label: `${item.name}, ${item.state}`, href: `/locations/${item.slug}` },
+        ]}
+      />
       <JsonLd
         data={[
           cityLocationWebPageSchema(item),
@@ -90,6 +100,20 @@ export default async function CityPage({ params }: Props) {
       </Section>
 
       <Section
+        title={`AI receptionist in ${item.name}`}
+        subtitle="24/7 response coverage that helps convert missed calls into qualified leads."
+      >
+        <Card className="space-y-3">
+          <p className="text-sm leading-relaxed text-slate-200">
+            For service businesses in {item.name}, speed-to-response can be the difference between booked jobs and lost revenue. Our AI receptionist setup helps you handle after-hours and overflow inquiries with consistent answers, lead qualification, and clear next steps.
+          </p>
+          <p className="text-sm leading-relaxed text-slate-200">
+            We customize scripts and response logic around your services, then layer in booking or escalation workflows when needed so the system supports your real operations instead of creating extra admin work.
+          </p>
+        </Card>
+      </Section>
+
+      <Section
         title={`Services in ${item.name}`}
         subtitle="Each service page deepens topical relevance while keeping city copy unique and useful."
       >
@@ -97,13 +121,56 @@ export default async function CityPage({ params }: Props) {
           {services.map((service) => (
             <Card key={service.slug}>
               <h3 className="text-lg font-semibold text-white">
-                {service.title} in {item.name}
+                <Link href={`/services/${service.slug}/${item.slug}`} className="hover:text-cyan-200">
+                  {service.title} in {item.name}
+                </Link>
               </h3>
               <p className="mt-2 text-sm text-slate-300">
-                We align {service.primaryKeyword} with &quot;{service.slug.replaceAll("-", " ")} {item.name.toLowerCase()}&quot; search demand using localized messaging and conversion-focused UX.
+                {service.slug === "web-design"
+                  ? `Conversion-focused web design for ${item.name} businesses that need stronger trust, clearer offers, and more booked calls from site traffic.`
+                  : service.slug === "local-seo"
+                    ? `Local SEO for ${item.name} businesses that want better map visibility, stronger local rankings, and more qualified inbound leads.`
+                    : `AI receptionist setup for ${item.name} businesses with custom scripts, fast response handling, and optional booking workflows.`}
               </p>
+              <Link href={`/services/${service.slug}`} className="mt-4 inline-block text-sm font-semibold text-cyan-300 hover:text-cyan-200">
+                Learn about {service.title}
+              </Link>
             </Card>
           ))}
+        </div>
+      </Section>
+
+      <Section
+        title={`Growth resources for ${item.name} businesses`}
+        subtitle="Practical guides that support city-level web design and local SEO decisions."
+      >
+        <div className="flex flex-wrap gap-3">
+          <Link
+            href="/insights"
+            className="rounded-full px-4 py-2 text-sm font-semibold text-slate-400 underline-offset-4 hover:text-cyan-200 hover:underline"
+          >
+            Browse all insights
+          </Link>
+          <Link
+            href="/insights/local-seo-checklist-service-businesses"
+            className="rounded-full px-4 py-2 text-sm font-semibold text-cyan-200 ring-1 ring-slate-700/80 transition hover:bg-slate-800/60 hover:text-white"
+          >
+            Local SEO checklist
+          </Link>
+          <Link
+            href="/insights/website-conversion-fixes-for-local-businesses"
+            className="rounded-full px-4 py-2 text-sm font-semibold text-cyan-200 ring-1 ring-slate-700/80 transition hover:bg-slate-800/60 hover:text-white"
+          >
+            Website conversion fixes
+          </Link>
+        </div>
+      </Section>
+
+      <Section title={`Need more leads in ${item.name}?`}>
+        <div className="glass rounded-2xl p-8 text-center">
+          <Button href="/contact" eventLabel={`city_cta_${item.slug}`}>
+            Request a Plan
+          </Button>
         </div>
       </Section>
 
@@ -123,14 +190,6 @@ export default async function CityPage({ params }: Props) {
               <p className="mt-3 text-sm leading-relaxed text-slate-300">{faq.answer}</p>
             </details>
           ))}
-        </div>
-      </Section>
-
-      <Section title={`Need more leads in ${item.name}?`}>
-        <div className="glass rounded-2xl p-8 text-center">
-          <Button href="/contact" eventLabel={`city_cta_${item.slug}`}>
-            Request a Plan
-          </Button>
         </div>
       </Section>
     </>

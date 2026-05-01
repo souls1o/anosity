@@ -7,9 +7,13 @@ const footerNav = {
   services: [
     { href: "/services/web-design", label: "Web design" },
     { href: "/services/local-seo", label: "Local SEO" },
+    { href: "/services/ai-receptionist", label: "AI Receptionist" },
   ],
   company: [
     { href: "/portfolio", label: "Portfolio" },
+    { href: "/services", label: "Services" },
+    { href: "/locations", label: "Locations" },
+    { href: "/insights", label: "Insights" },
     { href: "/contact", label: "Contact" },
   ],
 };

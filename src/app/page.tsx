@@ -19,6 +19,11 @@ export const metadata = buildMetadata({
     "web design for service businesses",
     "local seo agency",
     "digital marketing for local businesses",
+    "ai receptionist",
+    "digital marketing",
+    "local growth engine",
+    "local seo",
+    "web design"
   ],
 });
 
@@ -87,6 +92,33 @@ export default function Home() {
               </Card>
             </Reveal>
           ))}
+        </div>
+      </Section>
+
+      <Section
+        eyebrow="How It Works Together"
+        title="A simple pipeline that drives more booked clients"
+        subtitle="Each piece has a specific job: attract demand, convert trust, and capture missed opportunities."
+      >
+        <div className="grid gap-4 md:grid-cols-3">
+          <Card>
+            <h3 className="text-lg font-semibold text-white">Local SEO brings in clients</h3>
+            <p className="mt-2 text-sm text-slate-300">
+              Local SEO helps you show up when people are actively searching for your services, so more qualified prospects enter your pipeline.
+            </p>
+          </Card>
+          <Card>
+            <h3 className="text-lg font-semibold text-white">Your website turns interest into calls</h3>
+            <p className="mt-2 text-sm text-slate-300">
+              A professional, authority-driven website builds trust fast and makes it easy for visitors to call, message, or request a quote.
+            </p>
+          </Card>
+          <Card>
+            <h3 className="text-lg font-semibold text-white">AI receptionist captures missed calls</h3>
+            <p className="mt-2 text-sm text-slate-300">
+              AI receptionist workflows answer missed or after-hours calls, qualify leads, and guide people toward booking so more opportunities get closed.
+            </p>
+          </Card>
         </div>
       </Section>
 

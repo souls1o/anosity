@@ -1,5 +1,5 @@
 import type { Service } from "./types";
-import { localSeoPricing, webDesignPricing } from "./services-pricing-copy";
+import { aiReceptionistPricing, localSeoPricing, webDesignPricing } from "./services-pricing-copy";
 
 export const services: Service[] = [
   {
@@ -59,6 +59,35 @@ export const services: Service[] = [
     ],
     primaryKeyword: "local seo for service businesses",
     pricing: localSeoPricing,
+  },
+  {
+    slug: "ai-receptionist",
+    title: "AI Receptionist",
+    shortDescription:
+      "Never miss qualified calls with an AI receptionist trained on your services, scripts, and booking flow.",
+    heroTitle: "AI Receptionist That Converts Calls Into Booked Jobs",
+    heroSubtitle:
+      "We implement AI receptionist workflows for service businesses that need fast, consistent responses, better lead qualification, and optional automated booking.",
+    benefits: [
+      "24/7 call coverage for missed, overflow, and after-hours inquiries",
+      "Scripted responses tailored to your services and brand voice",
+      "Lead qualification logic to prioritize high-value opportunities",
+      "Optional booking workflows and escalation rules for live follow-up",
+    ],
+    problemsSolved: [
+      "Missed calls that turn into lost revenue",
+      "Inconsistent call handling across staff and shifts",
+      "Slow response times when prospects are ready to book",
+      "Manual call triage that drains team capacity",
+    ],
+    process: [
+      "Discovery call to map scripts, FAQs, and qualification criteria",
+      "Conversation flow design and response guardrails",
+      "Booking/escalation workflow setup and testing",
+      "Go-live monitoring, tuning, and monthly performance review",
+    ],
+    primaryKeyword: "ai receptionist for local businesses",
+    pricing: aiReceptionistPricing,
   },
 ];
 

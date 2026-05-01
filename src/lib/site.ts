@@ -2,6 +2,8 @@ export const siteConfig = {
   name: "Anosity Digital Marketing",
   shortName: "Anosity",
   url: "https://www.anosity.com",
+  logoPath: "/images/favicon.ico",
+  ogImagePath: "/images/favicon.ico",
   locale: "en-US",
   language: "en",
   description:
@@ -9,12 +11,11 @@ export const siteConfig = {
   phone: "(559) 656-0115",
   email: "info@anosity.com",
   ctaHref: "/contact",
+  priceRange: "$$",
   areaServed: ["Tulare, CA", "Visalia, CA", "Porterville, CA"],
   /** Replace with your real profile URLs */
   social: {
-    linkedin: "https://www.linkedin.com/company/anosity-digital-marketing",
     facebook: "https://www.facebook.com/anosity",
-    instagram: "https://www.instagram.com/anositydigital",
-    x: "https://twitter.com/anositydigital",
+    instagram: "https://www.instagram.com/anosity.digital",
   },
 };

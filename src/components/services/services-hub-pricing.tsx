@@ -16,7 +16,7 @@ export function ServicesHubPricing() {
             <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">General range</p>
             <p className="mt-2 font-display text-xl font-bold text-white md:text-2xl">
               Most projects land between{" "}
-              <span className="bg-gradient-to-r from-fuchsia-300 to-cyan-300 bg-clip-text text-transparent">$1,000 and $2,500</span>
+              <span className="bg-gradient-to-r from-fuchsia-300 to-cyan-300 bg-clip-text text-transparent">$600 and $1,400</span>
               , depending on scope
             </p>
             <p className="mt-3 text-xs text-slate-500">

@@ -7,6 +7,8 @@ type SeoInput = {
   path: string;
   keywords?: string[];
   noIndex?: boolean;
+  imagePath?: string;
+  openGraphType?: "website" | "article";
 };
 
 export function buildMetadata({
@@ -15,8 +17,11 @@ export function buildMetadata({
   path,
   keywords = [],
   noIndex = false,
+  imagePath = siteConfig.ogImagePath,
+  openGraphType = "website",
 }: SeoInput): Metadata {
   const url = `${siteConfig.url}${path}`;
+  const absoluteImageUrl = `${siteConfig.url}${imagePath}`;
   return {
     title,
     description,
@@ -42,14 +47,20 @@ export function buildMetadata({
       title,
       description,
       url,
-      type: "website",
+      type: openGraphType,
       siteName: siteConfig.name,
       locale: siteConfig.locale,
+      images: [
+        {
+          url: absoluteImageUrl,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: [absoluteImageUrl],
     },
   };
 }
