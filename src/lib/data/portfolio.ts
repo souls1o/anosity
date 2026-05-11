@@ -6,4 +6,9 @@ export const portfolioProjects: PortfolioProject[] = [
     title: "Clean Dream",
     url: "https://cleandreamca.com",
   },
+  {
+    id: "tulare-county-landscaping",
+    title: "Tulare County Landscaping",
+    url: "https://tularecountylandscaping.com",
+  },
 ];
